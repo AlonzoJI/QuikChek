@@ -1,0 +1,6 @@
+yt-dlp
+openai-whisper
+ffmpeg-python
+requests
+python-dotenv
+certifi
