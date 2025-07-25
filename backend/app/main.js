@@ -1,9 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const pool = require('../config/database'); // Move this to the top
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
@@ -14,7 +15,25 @@ app.get('/api/test', (req, res) => {
   res.json({ message: 'QuikChek Backend is running!' });
 });
 
-// Import routes
+// Database test route
+app.get('/api/db-test', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({ 
+      success: true, 
+      timestamp: result.rows[0].now,
+      message: 'Database connected successfully!' 
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false, 
+      message: 'Database connection failed',
+      error: error.message 
+    });
+  }
+});
+
+// Import routes (for later)
 // app.use('/api/news', require('../routes/news'));
 // app.use('/api/verify', require('../routes/verify'));
 

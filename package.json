@@ -1,0 +1,25 @@
+{
+  "name": "quikchek",
+  "version": "1.0.0",
+  "description": "**Fast, reliable news for Gen Z with real-time misinformation detection**",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "node app/main.js",
+    "dev": "nodemon app/main.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "nodemon": "^3.1.10"
+  }
+}
