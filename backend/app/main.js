@@ -35,7 +35,7 @@ app.get('/api/db-test', async (req, res) => {
 
 // Import routes (for later)
 // app.use('/api/news', require('../routes/news'));
-// app.use('/api/verify', require('../routes/verify'));
+app.use('/api/verify', require('../routes/verify'));
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

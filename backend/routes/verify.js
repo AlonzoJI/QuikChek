@@ -35,4 +35,9 @@ router.post('/tiktok-transcript', (req, res) => {
   });
 });
 
+// Basic test route
+router.get('/test', (req, res) => {
+  res.json({ message: 'Verify route is working!' });
+});
+
 module.exports = router;

@@ -3,39 +3,23 @@ import yt_dlp
 import whisper
 from yt_dlp.utils import DownloadError
 import ssl
+import sys
+import json
+from typing import Dict, Any, Optional
 
 # Insecure SSL workaround. Only use if you cannot fix certificates.
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # Load the Whisper model once at import time to avoid reloading for each call.
-# Choose a smaller model like "base" if performance is an issue.
 model = whisper.load_model("small")
 
-"""
-Simple TikTok audio to transcript pipeline.
-
-Steps:
-1. Download audio from a TikTok URL using yt_dlp.
-2. Save the audio file in data/audio/.
-3. Transcribe the audio with a Whisper model.
-4. Save the transcript as a text file in data/transcripts/.
-5. Return metadata and file paths.
-
-Note: This script disables SSL verification to bypass certificate issues.
-Remove the ssl override in production and fix certificates instead.
-"""
-def tikTokConversion(link: str) -> dict:
-
+def tikTokConversion(link: str) -> Dict[str, Any]:
     # Create directories if they do not exist.
     audio_dir = Path("data/audio")
     transcript_dir = Path("data/transcripts")
     audio_dir.mkdir(parents=True, exist_ok=True)
     transcript_dir.mkdir(parents=True, exist_ok=True)
 
-    # yt_dlp options:
-    # format selects the best available audio
-    # outtmpl controls the output filename pattern (video id)
-    # postprocessors tells yt_dlp to extract or convert audio to m4a
     ydl_opts = {
         "format": "bestaudio/best",
         "outtmpl": str(audio_dir / "%(id)s.%(ext)s"),
@@ -46,37 +30,51 @@ def tikTokConversion(link: str) -> dict:
     }
 
     try:
-        # Download and extract metadata.
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(link, download=True)
-        audio_path = audio_dir / f"{info['id']}.m4a"
+        
+        if info is None:
+            return {"success": False, "error": "Failed to extract video info"}
+            
+        video_id = info.get('id')
+        if not video_id:
+            return {"success": False, "error": "No video ID found"}
+            
+        audio_path = audio_dir / f"{video_id}.m4a"
 
         if not audio_path.exists():
-            return {"error": f"Audio file not created: {audio_path}"}
+            return {"success": False, "error": f"Audio file not created: {audio_path}"}
 
-        # Transcribe the downloaded audio file.
         result = model.transcribe(str(audio_path))
-        text = result.get("text", "").strip()
+        text = result.get("text", "")
+        if text:
+            text = text.strip()
+        
         if not text:
-            return {"error": "Transcription returned empty text"}
+            return {"success": False, "error": "Transcription returned empty text"}
 
-        # Save transcript to file.
-        transcript_path = transcript_dir / f"{info['id']}.txt"
+        transcript_path = transcript_dir / f"{video_id}.txt"
         transcript_path.write_text(text, encoding="utf-8")
 
         return {
+            "success": True,
             "audio_file": str(audio_path),
             "transcript_file": str(transcript_path),
             "transcript_text": text,
-            "video_title": info.get("title"),
+            "video_title": info.get("title", "Unknown"),
         }
 
     except DownloadError as e:
-        return {"error": f"Download failed: {e}"}
+        return {"success": False, "error": f"Download failed: {e}"}
     except Exception as e:
-        # Fallback for any other unexpected error
-        return {"error": f"Unexpected error: {e}"}
-    
-test = tikTokConversion('https://www.tiktok.com/@foxnews/video/7530825267712134430?q=fox%20news&t=1753413009431')
-print(test)
+        return {"success": False, "error": f"Unexpected error: {e}"}
+
+# Command line interface
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        url = sys.argv[1]
+        result = tikTokConversion(url)
+        print(json.dumps(result))
+    else:
+        print(json.dumps({"success": False, "error": "No URL provided"}))
         
