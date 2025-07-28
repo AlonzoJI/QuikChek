@@ -2,6 +2,7 @@ const express = require('express');
 const { exec } = require('child_process');
 const path = require('path');
 const router = express.Router();
+const FactCheckService = require('../utils/factCheckService');
 
 // TikTok transcription endpoint
 router.post('/tiktok-transcript', (req, res) => {
@@ -38,6 +39,33 @@ router.post('/tiktok-transcript', (req, res) => {
 // Basic test route
 router.get('/test', (req, res) => {
   res.json({ message: 'Verify route is working!' });
+});
+
+router.post('/fact-check', async (req, res) => {
+  try {
+    const { text } = req.body;
+    
+    if (!text) {
+      return res.status(400).json({ success: false, error: 'Text is required' });
+    }
+    
+    const factCheckResults = await FactCheckService.verifyTranscript(text);
+    
+    res.json({
+      success: true,
+      originalText: text,
+      factCheckResults: factCheckResults,
+      summary: {
+        totalClaims: factCheckResults.length,
+        verifiedClaims: factCheckResults.filter(r => r.factChecks.length > 0).length
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
 });
 
 module.exports = router;
