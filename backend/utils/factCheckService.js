@@ -38,11 +38,14 @@ class FactCheckService {
 
   static async verifyTranscript(transcript) {
     try {
-      // Extract potential claims from transcript (simple approach)
-      const sentences = transcript.split('. ').filter(s => s.length > 20);
+      const sentences = transcript
+        .split(/\.\s+|\n+/)
+        .map(s => s.trim())
+        .filter(s => s.length > 10);
+
       const factCheckResults = [];
-      
-      for (const sentence of sentences.slice(0, 3)) { // Check first 3 substantial sentences
+
+      for (const sentence of sentences.slice(0, 5)) { 
         const claims = await this.checkClaim(sentence);
         if (claims.length > 0) {
           factCheckResults.push({
@@ -51,7 +54,7 @@ class FactCheckService {
           });
         }
       }
-      
+
       return factCheckResults;
     } catch (error) {
       console.error('Transcript verification error:', error.message);
