@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import {Link} from "react-router-dom";
 import "../styles/tableOfContents.css";
 
 // navbar
@@ -17,18 +17,18 @@ const TableOfContents = () => {
       
       {/* nav links */}
       <div className="nav-links">
-        <a href="#home">
-          <img src="" className="nav-icon"/>
+        <Link to="/">
+          <img src="" className="nav-icon" alt="" />
           <div className="link-name">HOME</div>
-        </a>
-        <a href="/news">
-          <img src="" className="nav-icon"/>
+        </Link>
+        <Link to="/news">
+          <img src="" className="nav-icon" alt="" />
           <div className="name-link">NEWS</div>
-        </a>
-        <a href="#purpose">
-          <img src="" className="nav-icon"/>
+        </Link>
+        <Link to="">
+          <img src="" className="nav-icon" alt="" />
           <div className="name-link">...</div>
-        </a>
+        </Link>
       </div>
     </nav>
   );

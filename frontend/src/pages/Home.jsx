@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
 import TikTokChecker from "../components/tiktokChecker";
+import {Link} from "react-router-dom";
 
 const Home = () => {
   return (
@@ -29,7 +30,7 @@ const Home = () => {
 
             {/* news button */}
             <div className="button-wrapper">
-                <button className="news-button">Browse News</button>
+              <Link to="/news"><button className="news-button">Browse News</button></Link>
             </div>
           </div>
         </div>
