@@ -86,6 +86,20 @@
     gap: 30px;
 }
 
+
+/* card floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 /* cards */
 /* card background blur */
 .home-card {
@@ -97,8 +111,13 @@
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
+    animation: float 5s ease-in-out infinite;
+
 }
-  
+/*pause float when hovered*/
+.home-card:hover {
+  animation-play-state: paused;
+}
 .home-card-inner {
     position: relative; 
     background: white;
@@ -111,6 +130,7 @@
     padding: 62px 16px 32px; 
     width: 100%;
     display: flex;
+    
 }
   
 .card-header {
