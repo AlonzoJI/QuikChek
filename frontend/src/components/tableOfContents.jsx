@@ -12,27 +12,34 @@ const TableOfContents = () => {
         <Link to="/" className="home-link">
         <h1>QuikChek</h1>
         {/* tiktok logo */}
-        <img src="/pics/tiktok-logo.png" alt="TikTok Logo" className="tiktok-logo" />
+        <img src="/pics/tiktok-logo.png" alt="TikTok Logo" className="tiktok-logo"/>
         </Link>
       </div>
-
       
       {/* nav links */}
       <div className="nav-links">
-        <Link to="/">
-          <img src="" className="nav-icon" alt="" />
-          <div className="link-name">HOME</div>
+        <Link to="/" className="nav-link">
+          <span className="nav-icon-wrapper">
+            <img src="/pics/home.png" alt="Home icon" className="nav-icon"/>
+          </span>
+          <span className="link-name">HOME</span>
         </Link>
-        <Link to="/news">
-          <img src="" className="nav-icon" alt="" />
-          <div className="name-link">NEWS</div>
+        
+        <Link to="/news" className="nav-link">
+          <span className="nav-icon-wrapper">
+            <img src="/pics/news2.png" alt="News icon" className="nav-icon"/>
+          </span>
+          <span className="link-name">NEWS</span>
         </Link>
-        <Link to="">
-          <img src="" className="nav-icon" alt="" />
-          <div className="name-link">...</div>
-        </Link>
-      </div>
-    </nav>
+
+      <Link to="/saved" className="nav-link">
+        <span className="nav-icon-wrapper">
+          <img src="/pics/bookmark.png" alt="Saved icon" className="nav-icon"/>
+        </span>
+        <span className="link-name">SAVED</span>
+      </Link>
+    </div>
+  </nav>
   );
 };
 
