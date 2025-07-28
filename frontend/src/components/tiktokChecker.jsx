@@ -22,23 +22,29 @@ const TikTokChecker = () => {
             </div>
             
             {/* outputted results from search */}
-            <div className="results-grid">
-
-                {/* column for true false split - for true */}
+            <div className="results-wrapper">
+                {/* verified */}
                 <div className="results-column">
-                    <div className="column-label true-label">TRUE</div>
-                    <div className="result-box">
-                        <h4>TRUE</h4>
-                        <a href="#">View Source</a>
+                    <h3 className="column-title verified-title">Verified</h3>
+                    <div className="results-grid">
+                        <div className="result-card">
+                            <h4 className="claim-text">“Bananas are radioactive.”</h4>
+                            <div className="verification verified">VERIFIED</div>
+                            <p className="blurb">Bananas naturally contain potassium-40, a radioactive isotope. The radiation is extremely minimal and harmless.</p>
+                            <a href="https://www.epa.gov/radiation/understanding-radiation" className="source-link" target="_blank">View Source</a>
+                        </div>
                     </div>
-                 </div>
-                
-                {/* column for true false split - for false */}
+                </div>
+                {/* unverified */}
                 <div className="results-column">
-                    <div className="column-label false-label">FALSE</div>
-                    <div className="result-box">
-                        <h4>FALSE</h4>
-                        <a href="#">View Source</a>
+                    <h3 className="column-title unverified-title">Unverified</h3>
+                    <div className="results-grid">
+                        <div className="result-card">
+                            <h4 className="claim-text">“The Earth is flat.”</h4>
+                            <div className="verification unverified">VERIFIED FALSE</div>
+                            <p className="blurb">Scientific consensus based on satellite imagery and physical evidence confirms the Earth is spherical.</p>
+                            <a href="https://www.nasa.gov" className="source-link" target="_blank">View Source</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -9,11 +9,13 @@ const TableOfContents = () => {
       <div className="left-nav">
 
         {/* web name */}
+        <Link to="/" className="home-link">
         <h1>QuikChek</h1>
-
         {/* tiktok logo */}
-        <img src="/pics/tiktok-logo.png" alt="TikTok Logo" className="tiktok-logo"/>
+        <img src="/pics/tiktok-logo.png" alt="TikTok Logo" className="tiktok-logo" />
+        </Link>
       </div>
+
       
       {/* nav links */}
       <div className="nav-links">

@@ -1,3 +1,12 @@
+/* floating animation */
+
+@keyframes float {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}
+
+
 /* home page styles */
 
 .homepage {
@@ -15,12 +24,14 @@
 .left-section {
     max-width: 500px;
     margin-bottom: 80px;  
-    padding-top: 40px;  
+    padding-top: 40px;
 }
   
 .left-section h1 {
     font-size: 48px;
     margin-bottom: 20px;
+    text-align: left;
+    margin: 0;
 }
 
 /* swipe text special styling*/
@@ -66,10 +77,12 @@
     color: white;
     border: 2px solid #111;
     background: linear-gradient(90deg, #ff3c6a, #32c5c0);
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .tiktok-button:hover {
-    background: #de2550 !important; 
+    background: #de2550 !important;
+    transform: scale(1.10);
 }
   
 .news-button {
@@ -78,6 +91,7 @@
 
 .news-button:hover {
     background: #32c5c0 !important;
+    transform: scale(1.10);
 }
   
 /* right page */
@@ -118,6 +132,17 @@
 .home-card:hover {
   animation-play-state: paused;
 }
+    animation: float 3s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.home-card:hover {
+    animation-play-state: paused;
+    transform: translateY(-6px);
+    box-shadow: 0 11px 25px rgba(0, 0, 0, 0.12);
+}
+  
 .home-card-inner {
     position: relative; 
     background: white;

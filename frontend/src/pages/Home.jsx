@@ -11,7 +11,7 @@ const Home = () => {
         {/* left section */}
         <div className="left-section">
           <h1>Truth in Every <span className="swipe-text">Swipe</span></h1>
-          <p>Combat misinformation with our AI-powered fact-checking and curated news summaries designed for TikTok users.</p>
+          <p>Combat misinformation with our AI-powered fact-checking tool and quick news summaries</p>
           
           {/* button section */}
           <div className="buttons">

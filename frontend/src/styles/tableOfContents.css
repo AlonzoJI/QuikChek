@@ -20,6 +20,10 @@
     flex-direction: column;
     margin-left: 20px;
 }
+
+.home-link {
+    text-decoration-line: none;
+}
   
 /* web name (quikchek styling) */
 .left-nav h1 {
@@ -38,6 +42,11 @@
     left: -35px;
     width: 110px;
     z-index: 1;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.tiktok-logo:hover {
+    transform: scale(1.05);
 }
   
 /* nav links on right side of nav */
@@ -51,7 +60,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: background 0.3s ease, transform 0.2s ease;
     text-decoration: none;
+}
+
+.nav-links a:hover {
+    transform: scale(1.05);
 }
   
 /* link icon */
