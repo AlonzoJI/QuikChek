@@ -5,3 +5,6 @@ requests
 python-dotenv
 certifi
 react-router-dom
+@google/generative-ai
+dotenv
+axios
