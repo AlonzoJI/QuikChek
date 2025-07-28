@@ -49,7 +49,8 @@ const Home = () => {
                     {/* card icon and text */}
                     <img src="/pics/fact-check.png" className="home-card-icon"/>
                     <h3>TikTok Fact Checker</h3>
-                    <p>Paste any TikTok link and get AI-powered fact-checking ....</p>
+                    <p>Paste any TikTok link and our AI will cross-check the videos claims
+                    against trusted sources, letting you know whats verified and not.</p>
                 </div>
             </div>
             
@@ -65,7 +66,8 @@ const Home = () => {
                     {/* card icon and text */}
                     <img src="/pics/news.png" className="home-card-icon"/>
                     <h3>Fact Based News</h3>
-                    <p>lorem ipsum</p>
+                    <p>Swipe through verified news cards that give you a 
+                    trustworthy briefing on today's stories.</p>
                 </div>
              </div>
 
