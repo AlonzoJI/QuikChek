@@ -1,34 +1,101 @@
+import './styles/NewsFeed.css'
+import NewsCard from './components/NewsCard'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+// Test article data //
+const testArticles = [ 
+  {
+    source: "Reuters",
+    headline: "This is a Test News Headline",
+    briefSummary: "This is the brief version of the news.",
+    standardSummary: "This is the standard length summary with more details about the news story.",
+    detailedSummary: "This is the detailed summary with comprehensive information about the news story, including background context and analysis.",
+    category: "Technology"
+  },
+  {
+    source: "TechCrunch", 
+    headline: "AI Assistant Launches for Smartphones",
+    briefSummary: "New AI helper app releases today.",
+    standardSummary: "A major tech company has launched an advanced AI assistant designed to help users with daily tasks.",
+    detailedSummary: "Silicon Valley's newest breakthrough comes in the form of an artificial intelligence assistant that promises to revolutionize how we interact with our devices through natural language processing.",
+    category: "Technology"
+  },
+  {
+    source: "Financial Times",
+    headline: "Global Markets Rally After Economic Data",
+    briefSummary: "Stock markets rise worldwide.",
+    standardSummary: "International stock markets experienced significant gains following positive economic indicators.", 
+    detailedSummary: "Financial markets across the globe surged today as investors responded positively to encouraging economic data showing stronger job growth, controlled inflation, and increased consumer confidence.",
+    category: "Business"
+  }
+]
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentCardIndex, setCurrentCardIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [animationDirection, setAnimationDirection] = useState('')
+
+  const goToPrevious = () => {
+    if (isAnimating) return
+    
+    setIsAnimating(true)
+    setAnimationDirection('slide-right')
+    
+    setTimeout(() => {
+      setCurrentCardIndex(prev => 
+        prev === 0 ? testArticles.length - 1 : prev - 1
+      )
+      setAnimationDirection('slide-in-left')
+      
+      setTimeout(() => {
+        setIsAnimating(false)
+        setAnimationDirection('')
+      }, 250)
+    }, 300)
+  }
+  
+  const goToNext = () => {
+    if (isAnimating) return
+    
+    setIsAnimating(true)
+    setAnimationDirection('slide-left')
+    
+    setTimeout(() => {
+      setCurrentCardIndex(prev => 
+        prev === testArticles.length - 1 ? 0 : prev + 1
+      )
+      setAnimationDirection('slide-in-right')
+      
+      setTimeout(() => {
+        setIsAnimating(false)
+        setAnimationDirection('')
+      }, 250)
+    }, 300)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <h1>Your News Feed</h1>
+      <div className="news-card-container">
+        <NewsCard 
+          article={testArticles[currentCardIndex]} 
+          animationClass={animationDirection}
+        />
+        
+        <div className="swipe-buttons">
+          <button 
+            className="swipe-btn swipe-btn-left" 
+            onClick={goToPrevious}
+            disabled={isAnimating}
+          >←</button>
+          <button 
+            className="swipe-btn swipe-btn-right" 
+            onClick={goToNext}
+            disabled={isAnimating}
+          >→</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
