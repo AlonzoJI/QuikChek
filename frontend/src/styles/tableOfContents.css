@@ -1,0 +1,79 @@
+/* nav container */
+.navbar {
+    width: 100%;
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+  
+/* left side of nav so logo and name */
+.left-nav {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-left: 20px;
+}
+  
+/* web name (quikchek styling) */
+.left-nav h1 {
+    font-size: 28px;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    left: 92px;
+}
+  
+/* tt logo */
+.tiktok-logo {
+    position: absolute;
+    top: 8px;
+    left: -35px;
+    width: 110px;
+    z-index: 1;
+}
+  
+/* nav links on right side of nav */
+.nav-links {
+    display: flex;
+    gap: 38px;
+    padding-right: 86px;
+}
+  
+.nav-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+  
+/* link icon */
+.nav-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+  
+/* link names under icons */
+.link-name,
+.name-link {
+    background-color: white;
+    color: black;
+    padding: 4px 4px;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-top: -10px;
+    font-size: 10px;
+    width: 54px;
+    text-align: center;
+}
+  

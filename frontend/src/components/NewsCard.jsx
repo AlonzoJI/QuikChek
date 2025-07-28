@@ -27,9 +27,7 @@ function NewsCard({ article, animationClass }) {
             </button>
         </div>
 
-        <p className="summary-text">
-        {article[summaryType]}
-        </p>
+        <p className="summary-text">{article[summaryType]}</p>
 
         <div className="card-footer">
         <span className="category">{article.category}</span>

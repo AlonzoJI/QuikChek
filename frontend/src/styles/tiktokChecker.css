@@ -1,0 +1,107 @@
+/* section container */
+.tiktok-checker-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px 60px;
+    height: 644px;
+}
+  
+/* box */
+.checker-container {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(32px);
+    border-radius: 28px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 90%;
+    max-width: 1000px;
+    min-height: 650px;
+}
+  
+/* header */
+.checker-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 6px;
+}
+  
+.checker-container p {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 32px;
+}
+  
+/* input section  */
+.input-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+/* input section input box */
+.input-section input {
+    flex: 1;
+    min-width: 300px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+}
+
+/* placeholder text */
+.input-section input::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+  
+.input-section button {
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: 2px solid #111;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(90deg, #ff3c6a, #32c5c0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+  
+.input-section button:hover {
+    background: #de2550 !important;
+}
+  
+/* True / False grid */
+.results-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 10px;
+}
+  
+/* labels on columns */
+.column-label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-align: center;
+    padding: 6px 0;
+    border-radius: 12px;
+    color: black;
+}
+  
+.true-label {
+    background: #32c5c0;
+}
+  
+.false-label {
+    background: #ff3c6a;
+}
+  
+/*  result card */
+.result-box {
+   
+}
+  
