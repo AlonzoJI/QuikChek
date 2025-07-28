@@ -3,4 +3,5 @@ build/
 .env
 venv/
 __pycache__/
-data/
+data/backend/.env
+.env
