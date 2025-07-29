@@ -24,3 +24,11 @@ yarn-error.log*
 
 # VS Code
 .vscode/
+
+# Vite cache
+.vite/
+**/.vite/
+
+# Node modules (belt-and-suspenders)
+node_modules/
+**/node_modules/
