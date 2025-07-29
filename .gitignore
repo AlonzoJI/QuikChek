@@ -9,12 +9,11 @@ data/
 # Node.js
 node_modules/
 **/node_modules/
-package-lock.json
 
 # Vite/Frontend
-frontend/node_modules/.vite/
 frontend/dist/
 .vite/
+**/.vite/
 
 # Logs
 *.log
@@ -24,11 +23,3 @@ yarn-error.log*
 
 # VS Code
 .vscode/
-
-# Vite cache
-.vite/
-**/.vite/
-
-# Node modules (belt-and-suspenders)
-node_modules/
-**/node_modules/
