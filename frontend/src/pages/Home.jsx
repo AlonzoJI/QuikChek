@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import "../styles/Home.css";
 import TikTokChecker from "../components/tiktokChecker";
 import {Link} from "react-router-dom";
 
 const Home = () => {
+  const [scrollOpacity, setScrollOpacity] = useState(1);
+  // fade + scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = 420; // halfway point
+      
+      const opacity = Math.max(0, 1 - (scrollTop / maxScroll));
+      setScrollOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div>
       {/* landing / home section */}
-      <div className="homepage">
+      <div 
+        className="homepage"
+        style={{ 
+          opacity: scrollOpacity,
+          transition: 'opacity 0.1s ease-out' 
+        }}
+      >
         {/* left section */}
         <div className="left-section">
           <h1>Truth in Every <span className="swipe-text">Swipe</span></h1>

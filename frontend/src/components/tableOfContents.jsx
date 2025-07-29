@@ -1,11 +1,31 @@
-import React from "react";
+//import React from "react";
+import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import "../styles/tableOfContents.css";
 
 // navbar
 const TableOfContents = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  // navbar blur 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 350) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className= {`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="left-nav">
 
         {/* web name */}
@@ -36,7 +56,7 @@ const TableOfContents = () => {
         <span className="nav-icon-wrapper">
           <img src="/pics/bookmark.png" alt="Saved icon" className="nav-icon"/>
         </span>
-        <span className="link-name">SAVED</span>
+        <span className="link-name">HISTORY</span>
       </Link>
     </div>
   </nav>

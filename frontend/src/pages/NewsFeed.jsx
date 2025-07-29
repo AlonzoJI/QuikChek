@@ -36,27 +36,30 @@ const testArticles = [
   },
 ];
 
+
 export default function NewsFeed() {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationDirection, setAnimationDirection] = useState("");
 
+  //left button click
   const goToPrevious = () => {
-    if (isAnimating) return;
+    if (isAnimating) return; 
     setIsAnimating(true);
     setAnimationDirection("slide-right");
     setTimeout(() => {
       setCurrentCardIndex((prev) =>
         prev === 0 ? testArticles.length - 1 : prev - 1
-      );
-      setAnimationDirection("slide-in-left");
+      ); // updates index to decrease by 1
+      setAnimationDirection("slide-in-left"); // previous card slide in from left
       setTimeout(() => {
-        setIsAnimating(false);
-        setAnimationDirection("");
-      }, 250);
-    }, 300);
+        setIsAnimating(false); // end animation
+        setAnimationDirection("");}
+        , 250);
+      }, 300); 
   };
 
+  //right button click
   const goToNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
@@ -64,15 +67,16 @@ export default function NewsFeed() {
     setTimeout(() => {
       setCurrentCardIndex((prev) =>
         prev === testArticles.length - 1 ? 0 : prev + 1
-      );
-      setAnimationDirection("slide-in-right");
+      );// updates index to decrease by 1
+      setAnimationDirection("slide-in-right"); // next card slide in from right
       setTimeout(() => {
-        setIsAnimating(false);
+        setIsAnimating(false); // end animation
         setAnimationDirection("");
       }, 250);
     }, 300);
   };
 
+  // news feed setup 
   return (
     <main className="news-feed">
       <h1>Your News Feed</h1>
