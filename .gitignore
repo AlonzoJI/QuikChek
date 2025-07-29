@@ -4,6 +4,7 @@ build/
 venv/
 __pycache__/
 data/backend/.env
+data/
 
 # Node.js
 node_modules/
