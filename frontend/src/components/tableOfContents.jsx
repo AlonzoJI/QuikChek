@@ -32,7 +32,7 @@ const TableOfContents = () => {
           <span className="link-name">NEWS</span>
         </Link>
 
-      <Link to="/saved" className="nav-link">
+      <Link to="/history" className="nav-link">
         <span className="nav-icon-wrapper">
           <img src="/pics/bookmark.png" alt="Saved icon" className="nav-icon"/>
         </span>

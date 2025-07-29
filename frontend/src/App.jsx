@@ -5,6 +5,7 @@ import MeshGradientBackground from "./components/gradientBackground";
 import TableOfContents from "./components/tableOfContents";
 import HomePage from "./pages/Home";
 import NewsFeed from "./pages/NewsFeed";
+import HistoryPage from "./pages/History";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
 
       {/* routes */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/news" element={<NewsFeed />} />
+        <Route path="/" element={<HomePage />}/>
+        <Route path="/news" element={<NewsFeed />}/>
+        <Route path="/history" element={<HistoryPage />}/>
       </Routes>
     </Router>
   );
