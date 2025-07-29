@@ -27,12 +27,13 @@
   
 /* web name (quikchek styling) */
 .left-nav h1 {
-    font-size: 28px;
+    font-size: 30px;
     color: black;
     font-weight: bold;
     position: relative;
     z-index: 2;
-    left: 92px;
+    left: 35px;
+
 }
   
 /* tt logo */
@@ -43,6 +44,9 @@
     width: 110px;
     z-index: 1;
     transition: background 0.3s ease, transform 0.2s ease;
+    width: 60px; 
+    height: 60px; 
+    object-fit: contain;
 }
 
 .tiktok-logo:hover {
