@@ -25,18 +25,19 @@ export async function extractClaims(transcript, opts = {}) {
   const max = Number.isFinite(opts.max) ? opts.max : 5;
 
   const prompt = `
-You will receive a raw transcript. Extract up to ${max} short, checkable factual claims.
+  You will receive a raw transcript. Extract up to ${max} short, checkable factual claims.
 
-Rules:
-- Output JSON only with this exact shape: {"claims": ["...", "..."]}.
-- Each claim must be 3 to 12 words, self-contained, and verifiable.
-- No opinions, no questions, no quotes, no speaker names, no sources.
-- Remove duplicates and keep distinct ideas only.
-- If there are fewer than ${max}, return fewer. If none, return {"claims": []}.
+  Rules:
+  - Output JSON only with this exact shape: {"claims": ["...", "..."]}.
+  - Each claim must be 3 to 12 words, self-contained, and verifiable.
+  - No opinions, no questions, no quotes, no speaker names, no sources.
+  - Remove duplicates and keep distinct ideas only.
+  - **Always include the main thesis or central assertion** (e.g., “The Earth is flat.”).
+  - If there are fewer than ${max}, return fewer. If none, return {"claims": []}.
 
-Transcript:
-"""${transcript}"""
-`;
+  Transcript:
+  """${transcript}"""
+  `;
 
   const resp = await model.generateContent({
     contents: [{ role: "user", parts: [{ text: prompt }] }],
