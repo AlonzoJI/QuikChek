@@ -6,32 +6,32 @@ import "../styles/NewsFeed.css";
 const testArticles = [
   {
     source: "Reuters",
-    headline: "This is a Test News Headline",
-    briefSummary: "This is the brief version of the news.",
+    headline: "Breakthrough Quantum Computing Chip Announced",
+    briefSummary: "New quantum chip boosts computing power.",
     standardSummary:
-      "This is the standard length summary with more details about the news story.",
+      "A leading tech company unveiled a revolutionary quantum computing chip that significantly enhances processing speeds.",
     detailedSummary:
-      "This is the detailed summary with comprehensive information about the news story, including background context and analysis.",
+      "The latest quantum computing chip introduced by the company promises unprecedented processing power, enabling advances in cryptography, AI, and data analysis. Industry experts see this as a milestone for the future of computing.",
     category: "Technology",
   },
   {
     source: "TechCrunch",
-    headline: "AI Assistant Launches for Smartphones",
-    briefSummary: "New AI helper app releases today.",
+    headline: "AI-Powered Virtual Reality Platform Gains Popularity",
+    briefSummary: "New VR platform uses AI for immersive experiences.",
     standardSummary:
-      "A major tech company has launched an advanced AI assistant designed to help users with daily tasks.",
+      "The newest AI-driven virtual reality platform has rapidly gained popularity among consumers and professionals alike for creating immersive, interactive environments.",
     detailedSummary:
-      "Silicon Valley's newest breakthrough comes in the form of an artificial intelligence assistant that promises to revolutionize how we interact with our devices through natural language processing.",
+      "This AI-powered VR platform combines cutting-edge machine learning with real-time user interaction to deliver personalized and adaptive virtual experiences. It is transforming gaming, online collaboration, and training simulations.",
     category: "Technology",
   },
   {
     source: "Financial Times",
-    headline: "Global Markets Rally After Economic Data",
-    briefSummary: "Stock markets rise worldwide.",
+    headline: "Global Markets Surge Amid Optimistic Economic Outlook",
+    briefSummary: "Markets up as economic outlook improves.",
     standardSummary:
-      "International stock markets experienced significant gains following positive economic indicators.",
+      "Global financial markets rallied strongly today in response to positive economic forecasts and robust earnings reports.",
     detailedSummary:
-      "Financial markets across the globe surged today as investors responded positively to encouraging economic data showing stronger job growth, controlled inflation, and increased consumer confidence.",
+      "Investors worldwide reacted to improved economic forecasts characterized by steady GDP growth, low inflation levels, and strong corporate earnings, leading to heightened market confidence and increased trading volumes.",
     category: "Business",
   },
 ];
