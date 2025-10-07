@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/history.css";
+import "../styles/History.css";
 
 export default function History() {
   // switch log into state so we can clear it
